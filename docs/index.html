@@ -1,38 +1,35 @@
-
-
-<div style="width: 50%; margin: 0 auto">
-  <div id="inked-painted">
-    <img src="https://raw.githubusercontent.com/Skeen/dice_image/master/docs/libuv_color.png" id="inked" alt>
-    <div id="colored"></div>
+<div style="width: 25%; margin: 0 auto">
+  <div id="diced-painted">
+    <img src="https://raw.githubusercontent.com/Skeen/dice_image/master/docs/libuv_color.png" id="diced" alt>
+    <div id="original"></div>
 </div>
 
 <style>
-body { background: #113; }
-div#inked-painted {
+div#diced-painted {
   position: relative; font-size: 0;
   -ms-touch-action: none;
   -webkit-touch-callout: none;
   -webkit-user-select: none;
 }
-div#inked-painted img {
+div#diced-painted img {
   width: 100%; height: auto;
 }
-div#colored {
+div#original {
   background-image: url(https://raw.githubusercontent.com/Skeen/dice_image/master/docs/libuv_color.dice.png);
   position: absolute;
   top: 0; left: 0; height: 100%;
   width: 50%;
   background-size: cover;
 }
-div#inked-painted:hover {
+div#diced-painted:hover {
   cursor: col-resize;
 }
 </style>
 
 <script>
-var inkbox = document.getElementById("inked-painted");
-var colorbox = document.getElementById("colored");
-var fillerImage = document.getElementById("inked");
+var inkbox = document.getElementById("diced-painted");
+var colorbox = document.getElementById("original");
+var fillerImage = document.getElementById("diced");
 inkbox.addEventListener("mousemove",trackLocation,false);
 inkbox.addEventListener("touchstart",trackLocation,false);
 inkbox.addEventListener("touchmove",trackLocation,false);
@@ -52,7 +49,7 @@ function trackLocation(e)
 {
 	var rect = fillerImage.getBoundingClientRect();
 	var position = ((e.pageX - rect.left) / fillerImage.offsetWidth)*100;
-    position = round_to_multiple(position, 100/50)
-	if (position <= 100) { colorbox.style.width = position+"%"; }
+    rounded_position = round_to_multiple(position, 100/50)
+	if (rounded_position <= 100) { colorbox.style.width = rounded_position+"%"; }
 }
 </script>
